@@ -67,11 +67,11 @@ gulp.task('html', function () {
 //编译SASS
 gulp.task('sass', function() {
     return sass(markDir+'/src/scss/', { sourcemap: true, style: 'expanded' })
+    .pipe(autoprefixer({
+           browsers: ['> 1%', 'last 1 version', 'Firefox > 0', 'Opera > 0'],
+           cascade: false
+    }))
     .pipe(sourcemaps.write())  //sass 调试Map
-    //.pipe(autoprefixer({
-    //       browsers: ['last 2 versions'],
-    //       cascade: false
-    //}))
     //.pipe(concat('all.css'))  //样式合并
     .pipe(gulp.dest(markDir+'/dist/css/'))
 });
